@@ -22,5 +22,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'linebreak-style': 'off',
     'import/no-extraneous-dependencies': 'off',
+    camelcase: 'off',
   },
 };
