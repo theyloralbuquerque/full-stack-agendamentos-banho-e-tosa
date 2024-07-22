@@ -26,7 +26,7 @@ Inicie o servidor onde a API está hospedada.
 Comece a interagir com a API para gerenciar os alunos da escola.
 
 ## Exemplo de Requisição:
-Para adicionar um novo alno, basta enviar uma requisição POST para o endpoint /alunos/ com os dados do aluno no corpo da requisição no formato JSON:
+Para adicionar um novo aluno, basta enviar uma requisição POST para o endpoint /alunos/ com os dados do aluno no corpo da requisição no formato JSON:
 ```json
 {
 	"nome": "Aluno 3",
