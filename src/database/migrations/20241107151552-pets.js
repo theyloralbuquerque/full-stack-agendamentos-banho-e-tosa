@@ -1,36 +1,34 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('alunos', {
+    await queryInterface.createTable('pets', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      nome: {
+      nome_pet: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sobrenome: {
+      tipo_pet: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      raca_pet: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      idade: {
+      tutor_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      peso: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
-      },
-      altura: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
+        allowNull: true,
+        references: {
+          model: 'tutores',
+          key: 'id',
+        },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       },
       created_at: {
         type: Sequelize.DATE,
@@ -44,6 +42,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('alunos');
+    await queryInterface.dropTable('pets');
   },
 };

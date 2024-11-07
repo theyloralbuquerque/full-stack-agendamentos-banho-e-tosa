@@ -1,30 +1,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('fotos', {
+    await queryInterface.createTable('tutores', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      originalname: {
+      nome: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      filename: {
+      sobrenome: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      tutor_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'tutores',
-          key: 'id',
-        },
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
+      telefone: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -38,6 +32,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('fotos');
+    await queryInterface.dropTable('tutores');
   },
 };
