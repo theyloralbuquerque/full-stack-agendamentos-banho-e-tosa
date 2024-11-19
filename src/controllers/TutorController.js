@@ -1,24 +1,24 @@
-import Aluno from '../models/Aluno';
 import Foto from '../models/Foto';
+import Tutor from '../models/Tutor';
 
-class AlunoController {
+class TutorController {
   async index(req, res) {
-    const alunos = await Aluno.findAll({
-      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
+    const tutores = await Tutor.findAll({
+      attributes: ['id', 'nome', 'sobrenome', 'telefone'],
       order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
       include: {
         model: Foto,
         attributes: ['url', 'filename'],
       },
     });
-    res.json(alunos);
+    res.json(tutores);
   }
 
   async create(req, res) {
     try {
-      const aluno = await Aluno.create(req.body);
+      const tutor = await Tutor.create(req.body);
 
-      return res.json(aluno);
+      return res.json(tutor);
     } catch (e) {
       console.log(e);
       return res.status(400).json({
@@ -37,7 +37,7 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id, {
+      const tutor = await Tutor.findByPk(id, {
         attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
         order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
         include: {
@@ -46,13 +46,13 @@ class AlunoController {
         },
       });
 
-      if (!aluno) {
+      if (!tutor) {
         return res.status(400).json({
-          errors: ['Aluno não existe'],
+          errors: ['Tutor não existe'],
         });
       }
 
-      return res.json(aluno);
+      return res.json(tutor);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.messsage),
@@ -70,17 +70,17 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id);
+      const tutor = await Tutor.findByPk(id);
 
-      if (!aluno) {
+      if (!tutor) {
         return res.status(400).json({
-          errors: ['Aluno não existe'],
+          errors: ['Tutor não existe'],
         });
       }
 
-      const alunoAtualizado = await aluno.update(req.body);
+      const tutorAtualizado = await tutor.update(req.body);
 
-      return res.json(alunoAtualizado);
+      return res.json(tutorAtualizado);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.messsage),
@@ -98,15 +98,15 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id);
+      const tutor = await Tutor.findByPk(id);
 
-      if (!aluno) {
+      if (!tutor) {
         return res.status(400).json({
-          errors: ['Aluno não existe'],
+          errors: ['Tutor não existe'],
         });
       }
 
-      await aluno.destroy();
+      await tutor.destroy();
 
       return res.json({
         apagado: true,
@@ -119,4 +119,4 @@ class AlunoController {
   }
 }
 
-export default new AlunoController();
+export default new TutorController();

@@ -11,7 +11,7 @@ import helmet from 'helmet';
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
-import alunoRoutes from './routes/alunoRoutes';
+import tutorRoutes from './routes/tutorRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 
 class App {
@@ -33,7 +33,7 @@ class App {
     this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
     this.app.use('/tokens/', tokenRoutes);
-    this.app.use('/alunos/', alunoRoutes);
+    this.app.use('/tutores/', tutorRoutes);
     this.app.use('/fotos/', fotoRoutes);
   }
 }
