@@ -26,13 +26,14 @@ export default class Tutor extends Model {
       telefone: {
         type: Sequelize.STRING,
         defaultValue: '',
-        validate: {
-          min: 11,
-          max: 11,
+        len: {
+          args: [11, 11],
+          msg: 'O telefone deve ter exatamente 11 caracteres.',
         },
       },
     }, {
       sequelize,
+      tableName: 'tutores',
     });
     return this;
   }

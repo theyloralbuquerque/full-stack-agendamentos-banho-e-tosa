@@ -38,7 +38,7 @@ class TutorController {
       }
 
       const tutor = await Tutor.findByPk(id, {
-        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
+        attributes: ['id', 'nome', 'sobrenome', 'telefone'],
         order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
         include: {
           model: Foto,
